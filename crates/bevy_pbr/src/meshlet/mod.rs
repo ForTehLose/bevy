@@ -181,14 +181,14 @@ impl Plugin for MeshletPlugin {
             return;
         };
 
-        if !render_app
-            .world()
-            .resource::<RenderDevice>()
-            .features()
-            .contains(WgpuFeatures::PUSH_CONSTANTS)
-        {
-            panic!("MeshletPlugin can't be used. GPU lacks support: WgpuFeatures::PUSH_CONSTANTS is not supported.");
-        }
+        //if !render_app
+        //    .world()
+        //    .resource::<RenderDevice>()
+        //    .features()
+        //    .contains(WgpuFeatures::PUSH_CONSTANTS)
+        //{
+        //    panic!("MeshletPlugin can't be used. GPU lacks support: WgpuFeatures::PUSH_CONSTANTS is not supported.");
+        //}
 
         render_app
             .add_render_graph_node::<MeshletVisibilityBufferRasterPassNode>(
