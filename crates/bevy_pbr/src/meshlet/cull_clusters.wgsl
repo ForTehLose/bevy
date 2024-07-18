@@ -169,6 +169,6 @@ fn project_view_space_sphere_to_screen_space_aabb(cp: vec3<f32>, r: f32) -> vec4
 
         let offset = view.clip_from_view * vec4(0,0,-0.01,1);
 
-        return vec4(min_x * inv_width, -max_y * inv_height, max_x * inv_width, -min_y * inv_height) + vec4(0.5) + offset * 7.0;
+        return vec4(min_x * inv_width, -max_y * inv_height, max_x * inv_width, -min_y * inv_height) + vec4(0.5) + offset * 12.0;
     }
 }
