@@ -143,6 +143,9 @@ fn lod_error_is_imperceptible(cp: vec3<f32>, r: f32) -> bool {
 fn project_view_space_sphere_to_screen_space_aabb(cp: vec3<f32>, r: f32) -> vec4<f32> {
     let inv_width = view.clip_from_view[0][0] * 0.5;
     let inv_height = view.clip_from_view[1][1] * 0.5;
+let p03 = view.clip_from_view[0][3];
+let p13 = view.clip_from_view[1][3];
+
     if view.clip_from_view[3][3] == 1.0 {
         // Orthographic
         let min_x = cp.x - r;
@@ -167,7 +170,8 @@ fn project_view_space_sphere_to_screen_space_aabb(cp: vec3<f32>, r: f32) -> vec4
         let max_y = (vy * c.y + cr.z) / (vy * c.z - cr.y);
 
         let offset = view.clip_from_view * vec4(0,0,-0.01,1);
+        let other = vec4(p03,p13,p03,p13);
 
-        return vec4(min_x * inv_width, -max_y * inv_height, max_x * inv_width, -min_y * inv_height) + vec4(0.5) + offset * 15.0;
+        return vec4(min_x * inv_width, -max_y * inv_height, max_x * inv_width, -min_y * inv_height) + vec4(0.5) + other;
     }
 }
